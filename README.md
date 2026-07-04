@@ -51,7 +51,8 @@ BasketManagement/
 ### پیش‌نیازها
 - .NET 8 SDK
 - SQL Server (یا هر دیتابیس دیگر)
-- RabbitMQ ( برای رویدادها)
+- RabbitMQ (برای رویدادها)
+- Redis (cache)
 
 ### مراحل نصب
 
@@ -77,7 +78,7 @@ BasketManagement/
 }
 ```
 #### ۳. اجرای Migration
-`dotnet ef database update -p BasketManagement.Infrastructure -s BasketManagement.Api`
+```dotnet ef database update -p BasketManagement.Infrastructure -s BasketManagement.Api```
 
 #### ۴. اجرای پروژه
 ```
@@ -213,11 +214,11 @@ Handler
 ## 🧪 تست‌ها
 
 ### اجرای تست‌ها
-`dotnet test`
+```dotnet test```
 
 ## 🐳 اجرا با Docker
 ### اجرا در محیط مستقل
-`docker-compose up -d`
+```docker-compose up -d```
 
 
 ## 📂 ساختار دیتابیس
