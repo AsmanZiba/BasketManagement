@@ -4,10 +4,11 @@ using BasketManagement.Application.Interfaces;
 
 namespace BasketManagement.Application.Basket.Commands.RemoveBasketItem;
 
-public class RemoveBasketItemHandler(IBasketRepository repository):
+public class RemoveBasketItemHandler(IBasketRepository repository, IBasketCacheService cacheService) :
     ICommandHandler<RemoveBasketItemCommand, ServiceResult>, IScopedDependency
 {
     private readonly IBasketRepository _repository = repository;
+    private readonly IBasketCacheService _cacheService = cacheService;
 
     public async Task<ServiceResult> Handle(RemoveBasketItemCommand request, CancellationToken ct)
     {
@@ -16,6 +17,7 @@ public class RemoveBasketItemHandler(IBasketRepository repository):
             return ServiceResult.Failure("سبد خرید یافت نشد");
 
         basket.RemoveItem(request.ProductId);
+        await _cacheService.RemoveBasketAsync(request.UserId);
 
         return ServiceResult.Success();
     }

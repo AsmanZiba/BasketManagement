@@ -58,6 +58,7 @@ BasketManagement/
 #### 1. تنظیم Connection String
 فایل appsettings.json را ویرایش کنید:
 
+```json
 {
    "ConnectionStrings": {
    "DefaultConnection": "Server=localhost,1433;Database=SimagarBasket;User Id=sa;Password=***;TrustServerCertificate=true;",
@@ -74,13 +75,15 @@ BasketManagement/
    "ExpirationMinutes": 30
  },
 }
-
+```
 #### ۳. اجرای Migration
-dotnet ef database update -p BasketManagement.Infrastructure -s BasketManagement.Api
+`dotnet ef database update -p BasketManagement.Infrastructure -s BasketManagement.Api`
 
 #### ۴. اجرای پروژه
+```
 cd BasketManagement.Api
 dotnet run
+```
 
 #### ۵. مشاهده مستندات API
 - Scalar UI: https://localhost:5001/scalar
@@ -89,7 +92,7 @@ dotnet run
 ## 🎯 ساختار Features (Vertical Slices)
 
 هر ویژگی به صورت یک Slice مجزا پیاده‌سازی شده است:
-
+```
 Features/
 ├── 📁 AddItemToBasket/
 │   ├── AddItemToBasketCommand.cs
@@ -111,7 +114,7 @@ Features/
 └── 📁 GetBasket/
     ├── GetBasketQuery.cs
     └── GetBasketHandler.cs
-
+```
 
 ## 📡 API Endpoints
 
@@ -126,9 +129,11 @@ Features/
 ### نمونه درخواست‌ها
 
 #### افزودن آیتم به سبد
+```
 POST /api/basket/add-item
 Content-Type: application/json
-
+```
+```json
 {
   "userId": 1,
   "item": {
@@ -136,11 +141,12 @@ Content-Type: application/json
     "quantity": 2
   }
 }
-
+```
 #### دریافت سبد خرید
-GET /api/basket/1
+`GET /api/basket/1`
 
 #### پاسخ موفق
+```json
 {
   "isSuccess": true,
   "value": {
@@ -160,11 +166,12 @@ GET /api/basket/1
     ]
   }
 }
-
+```
 
 ## 🔄 جریان داده (Data Flow)
 
 ### Command Flow (Write)
+```
 Request (Command)
     ↓
 ValidationBehavior (اعتبارسنجی)
@@ -182,8 +189,10 @@ Handler (منطق اصلی)
 Commit Transaction
     ↓
 Response (ServiceResult)
+```
 
 ### Query Flow (Read)
+```
 Request (Query)
     ↓
 ValidationBehavior (اعتبارسنجی)
@@ -199,16 +208,16 @@ Handler
           ذخیره در کش
               ↓
           بازگشت نتیجه
-
+```
 
 ## 🧪 تست‌ها
 
 ### اجرای تست‌ها
-dotnet test
+`dotnet test`
 
 ## 🐳 اجرا با Docker
 ### اجرا در محیط مستقل
-docker-compose up -d
+`docker-compose up -d`
 
 
 ## 📂 ساختار دیتابیس
@@ -232,5 +241,5 @@ docker-compose up -d
 | Quantity | int | تعداد |
 | UnitPrice | decimal(18,2) | قیمت واحد |
 
-
+---
 توسعه داده شده با ❤️ توسط علی دهقانی
