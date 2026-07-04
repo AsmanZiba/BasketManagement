@@ -17,12 +17,13 @@
 
 
 ## 🏗️ معماری پروژه
-
+```
 BasketManagement/
 ├── 📁 BasketManagement.Domain/          # لایه دامنه (Entities, Enums, Events)
 ├── 📁 BasketManagement.Application/     # لایه اپلیکیشن (Features, Behaviors, Contracts)
 ├── 📁 BasketManagement.Infrastructure/  # لایه زیرساخت (Persistence, Cache, Messaging)
 └── 📁 BasketManagement.Api/             # لایه Presentation (Controllers, Program.cs)
+```
 
 ### الگوهای معماری استفاده شده:
 - Vertical Slice Architecture
@@ -78,7 +79,9 @@ BasketManagement/
 }
 ```
 #### ۳. اجرای Migration
-```dotnet ef database update -p BasketManagement.Infrastructure -s BasketManagement.Api```
+```
+dotnet ef database update -p BasketManagement.Infrastructure -s BasketManagement.Api
+```
 
 #### ۴. اجرای پروژه
 ```
@@ -214,11 +217,15 @@ Handler
 ## 🧪 تست‌ها
 
 ### اجرای تست‌ها
-```dotnet test```
+```
+dotnet test
+```
 
 ## 🐳 اجرا با Docker
 ### اجرا در محیط مستقل
-```docker-compose up -d```
+```
+docker-compose up -d
+```
 
 
 ## 📂 ساختار دیتابیس
